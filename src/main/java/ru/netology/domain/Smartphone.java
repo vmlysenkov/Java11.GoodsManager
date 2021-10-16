@@ -13,4 +13,12 @@ public class Smartphone extends Product {
     public Smartphone() {
         super();
     }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 }
