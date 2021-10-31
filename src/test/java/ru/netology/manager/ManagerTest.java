@@ -11,8 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ManagerTest {
     private ProductRepository repository = new ProductRepository();
-    private Manager bookManager = new Manager(repository);
-    private Manager smartphoneManager = new Manager(repository);
     private Manager productManager = new Manager(repository);
     private Product book1 = new Book(1, "name1", 500, "author1");
     private Product book2 = new Book(2, "name2", 600, "author2");
@@ -23,18 +21,18 @@ public class ManagerTest {
 
     @BeforeEach
     public void setUp() {
-        bookManager.add(book1);
-        bookManager.add(book2);
-        bookManager.add(book3);
-        smartphoneManager.add(smartphone1);
-        smartphoneManager.add(smartphone2);
-        smartphoneManager.add(smartphone3);
+        productManager.add(book1);
+        productManager.add(book2);
+        productManager.add(book3);
+        productManager.add(smartphone1);
+        productManager.add(smartphone2);
+        productManager.add(smartphone3);
     }
 
 
     @Test
     void shouldSearchBookByAuthorOne() {
-        Product[] expected = bookManager.searchBy("author1");
+        Product[] expected = productManager.searchBy("author1");
         Product[] actual = {book1};
         assertArrayEquals(expected, actual);
 
@@ -42,7 +40,7 @@ public class ManagerTest {
 
     @Test
     void shouldSearchBookByNameOne() {
-        Product[] expected = bookManager.searchBy("name1");
+        Product[] expected = productManager.searchBy("name1");
         Product[] actual = {book1};
         assertArrayEquals(expected, actual);
     }
@@ -50,21 +48,21 @@ public class ManagerTest {
 
     @Test
     void shouldSearchSmartphoneByName() {
-        Product[] expected = smartphoneManager.searchBy("iphone");
+        Product[] expected = productManager.searchBy("iphone");
         Product[] actual = {smartphone1};
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void shouldSearchSmartphoneByManufacturer() {
-        Product[] expected = smartphoneManager.searchBy("samsung");
+        Product[] expected = productManager.searchBy("samsung");
         Product[] actual = {smartphone2};
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void shouldSearchSmartphoneBy() {
-        Product[] expected = smartphoneManager.searchBy("nokia");
+        Product[] expected = productManager.searchBy("nokia");
         Product[] actual = {};
         assertArrayEquals(expected, actual);
     }
